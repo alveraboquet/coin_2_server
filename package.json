@@ -1,0 +1,23 @@
+{
+  "name": "coin_2_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "description": "Liquidation",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "socket-io": "^1.0.0",
+    "socket.io": "^4.5.1",
+    "tardis-dev": "^13.4.10"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "Giang",
+  "engines": {
+    "node": "16.x"
+  }
+}
