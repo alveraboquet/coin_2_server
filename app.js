@@ -135,7 +135,7 @@ io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("get_data", async (data) => {
     setInterval(()=> {
-        socket.emit("return_data", arr);
+      socket.emit("return_data", arr);
     }, 1000)
   });
 });
