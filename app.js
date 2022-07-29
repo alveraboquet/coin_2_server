@@ -122,6 +122,9 @@ function formatLiquidation(liquidation) {
   arr.push(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
   ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
 }
+app.get("/", (req, res)=> {
+  res.send("Hello World")
+})
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });
