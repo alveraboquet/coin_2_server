@@ -121,12 +121,8 @@ function formatLiquidation(liquidation) {
   const direction = liquidation.side === "sell" ? "📉" : "📈";
   arr.push(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
   ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
-  console.log(
-    `${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
-      ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
-  );
 }
-server.listen(4000 || process.env.PORT, () => {
+server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });
 monitorLiquidations()
