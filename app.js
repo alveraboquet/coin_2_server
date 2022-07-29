@@ -59,7 +59,7 @@ const meta = {
   ftx: {
     name: "FTX",
     contractMultiplier: 1,
-    inverse: false,
+    inverse: true,
   },
   bitmex: {
     name: "BitMEX",
@@ -74,7 +74,7 @@ const meta = {
   "binance-futures": {
     name: "Binance USDT Futures",
     contractMultiplier: 1,
-    inverse: false,
+    inverse: true,
   },
   "binance-delivery": {
     name: "Binance COIN Futures",
@@ -84,7 +84,7 @@ const meta = {
   "bitfinex-derivatives": {
     name: "Bitfinex Derivatives",
     contractMultiplier: 1,
-    inverse: false,
+    inverse: true,
   },
   cryptofacilities: {
     name: "Kraken Futures",
@@ -112,7 +112,7 @@ function formatLiquidation(liquidation) {
   if (inverse === false) {
     normalizedAmount = normalizedAmount * liquidation.price;
   }
-  const minSize = 10000;
+  const minSize = 5000;
   if (normalizedAmount < minSize) {
     return;
   }
