@@ -126,7 +126,7 @@ function formatLiquidation(liquidation) {
       ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
   );
 }
-server.listen(port || process.env.PORT, () => {
+server.listen(4000 || process.env.PORT, () => {
   console.log("Listening on port 4000");
 });
 monitorLiquidations()
