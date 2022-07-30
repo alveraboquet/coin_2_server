@@ -102,7 +102,7 @@ const usdCurrencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
-let arr= []
+let arr = [];
 
 function formatLiquidation(liquidation) {
   const { name, contractMultiplier, inverse } = meta[liquidation.exchange];
@@ -112,32 +112,35 @@ function formatLiquidation(liquidation) {
   if (inverse === false) {
     normalizedAmount = normalizedAmount * liquidation.price;
   }
-  const minSize = 0;
+  const minSize = 10000;
   if (normalizedAmount < minSize) {
     return;
   }
   const liquidatedAmunt = usdCurrencyFormatter.format(normalizedAmount);
   const timestamp = liquidation.timestamp.toISOString();
   const direction = liquidation.side === "sell" ? "📉" : "📈";
-  console.log(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
-  ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
-  arr.push(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
-  ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
+  console.log(
+    `${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
+      ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
+  );
+  arr.push(
+    `${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
+      ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
+  );
 }
-app.get("/", (req, res)=> {
-  res.send("Hello World")
-})
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });
-monitorLiquidations()
-
+monitorLiquidations();
 
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("get_data", async (data) => {
-    setInterval(()=> {
+    setInterval(() => {
       socket.emit("return_data", arr);
-    }, 1000)
+    }, 1000);
   });
 });
