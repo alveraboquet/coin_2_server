@@ -112,13 +112,15 @@ function formatLiquidation(liquidation) {
   if (inverse === false) {
     normalizedAmount = normalizedAmount * liquidation.price;
   }
-  const minSize = 10000;
+  const minSize = 0;
   if (normalizedAmount < minSize) {
     return;
   }
   const liquidatedAmunt = usdCurrencyFormatter.format(normalizedAmount);
   const timestamp = liquidation.timestamp.toISOString();
   const direction = liquidation.side === "sell" ? "📉" : "📈";
+  console.log(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
+  ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
   arr.push(`${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
   ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`)
 }
