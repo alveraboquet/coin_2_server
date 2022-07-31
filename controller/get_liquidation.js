@@ -4,14 +4,14 @@ import { streamNormalized, normalizeLiquidations, combine } from "tardis-dev";
 let arr= []
 // let's monitor BTC perpetuals swaps only
 const monitoredExchanges = [
-    { id: 'ftx', symbols: ['BTC-PERP'] },
-    { id: 'bitmex', symbols: ['XBTUSD'] },
-    { id: 'deribit', symbols: ['BTC-PERPETUAL'] },
-    { id: 'binance-futures', symbols: ['BTCUSDT'] },
-    { id: 'binance-delivery', symbols: ['BTCUSD_PERP'] },
-    { id: 'bitfinex-derivatives', symbols: ['BTCF0:USTF0'] },
-    { id: 'cryptofacilities', symbols: ['PI_XBTUSD'] },
-    { id: 'huobi-dm-swap', symbols: ['BTC-USD'] }
+    { id: 'ftx', symbols: ['BTC-PERP', 'ETH-PERP'] },
+    { id: 'bitmex', symbols: ['XBTUSD', 'ETHTUSD'] },
+    { id: 'deribit', symbols: ['BTC-PERPETUAL', 'ETH-PERPETUAL'] },
+    { id: 'binance-futures', symbols: ['BTCUSDT', 'ETHUSDT'] },
+    { id: 'binance-delivery', symbols: ['BTCUSD_PERP', 'ETHUSD_PERP'] },
+    { id: 'bitfinex-derivatives', symbols: ['BTCF0:USTF0', 'ETHF0:USTF0'] },
+    { id: 'cryptofacilities', symbols: ['PI_XBTUSD', 'PI_ETHUSD'] },
+    { id: 'huobi-dm-swap', symbols: ['BTC-USD', 'ETH-USD'] }
   ]
   
   async function monitorLiquidations() {
