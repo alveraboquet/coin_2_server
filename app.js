@@ -11,12 +11,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://datistpham27.github.io/coin_2/", "http://localhost:3000/"],
+    origin: "https://datistpham27.github.io/coin_2",
     methods: ["GET", "POST"],
   })
 );
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', ['http://localhost:3000', "https://datistpham27.github.io/coin_2/"]);
+  res.setHeader('Access-Control-Allow-Origin', "https://datistpham27.github.io/coin_2/");
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -33,8 +33,6 @@ const io = new Server(server, {
 });
 // export const client= redis.createClient()
 // await client.connect()
-
-const { streamNormalized, normalizeLiquidations, combine } = require('tardis-dev')
 
 // let's monitor BTC perpetuals swaps only
 const monitoredExchanges = [
