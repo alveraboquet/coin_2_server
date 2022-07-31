@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://datistpham27.github.io/coin_2/"],
+    origin: "https://datistpham27.github.io/coin_2",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
