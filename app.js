@@ -120,7 +120,7 @@ function formatLiquidation(liquidation) {
   if (inverse === false) {
     normalizedAmount = normalizedAmount * liquidation.price;
   }
-  const minSize = 10000;
+  const minSize = 5000;
   if (normalizedAmount < minSize) {
     return;
   }
