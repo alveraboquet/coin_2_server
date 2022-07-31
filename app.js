@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 app.get("/api/v1/get/article", apiGetArticle)
+app.get("/api/v1/get/liquidation", get_liquidation)
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });
-app.get("/api/v1/get/liquidation", get_liquidation)

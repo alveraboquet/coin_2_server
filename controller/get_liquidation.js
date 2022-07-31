@@ -106,9 +106,7 @@ const monitoredExchanges = [
   
 monitorLiquidations()
 const get_liquidation= async (req, res)=> {
-    setTimeout(()=> {
-        return res.json(arr)
-    }, 1000)
+    return res.json(arr)
 }
 
 export default get_liquidation
