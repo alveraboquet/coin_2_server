@@ -34,22 +34,8 @@ const monitoredExchanges = [
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD"] },
-  { id: "ftx", symbols: ["ETH-PERP"] },
+  { id: "ftx", symbols: ["BTC-PERP"] },
   { id: "bitmex", symbols: ["XBTUSD"] },
-  { id: "deribit", symbols: ["ETH-PERPETUAL"] },
-  { id: "binance-futures", symbols: ["ETHUSDT"] },
-  { id: "binance-delivery", symbols: ["ETHUSD_PERP"] },
-  { id: "bitfinex-derivatives", symbols: ["ETHF0:USTF0"] },
-  { id: "cryptofacilities", symbols: ["PI_XBTUSD"] },
-  { id: "huobi-dm-swap", symbols: ["ETH-USD"] },
-  { id: "ftx", symbols: ["ETH-PERP"] },
-  { id: "bitmex", symbols: ["XBTUSD"] },
-  { id: "deribit", symbols: ["ETH-PERPETUAL"] },
-  { id: "binance-futures", symbols: ["ETHUSDT"] },
-  { id: "binance-delivery", symbols: ["ETHUSD_PERP"] },
-  { id: "bitfinex-derivatives", symbols: ["ETHF0:USTF0"] },
-  { id: "cryptofacilities", symbols: ["PI_ETHUSD"] },
-  { id: "huobi-dm-swap", symbols: ["ETH-USDT"] },
 ];
 
 async function monitorLiquidations() {
