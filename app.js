@@ -22,8 +22,8 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-export const client= redis.createClient()
-await client.connect()
+// export const client= redis.createClient()
+// await client.connect()
 
 const monitoredExchanges = [
   { id: "ftx", symbols: ["BTC-PERP"] },
@@ -161,7 +161,7 @@ monitorLiquidations();
 
 io.on("connection", (socket) => {
   console.log("a user connected");
-  socket.on("get_data", async (data) => {
+  socket.on("get_data", (data) => {
     setInterval(() => {
       socket.emit("return_data", arr);
     }, 1000);
