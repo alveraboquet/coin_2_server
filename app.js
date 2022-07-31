@@ -3,8 +3,12 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
+import fetch from "node-fetch"
+import apiGetArticle from "./controller/get_article.js";
+import redis from "redis"
 
 const app = express();
+
 app.use(
   cors({
     origin: "*",
@@ -18,6 +22,8 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
+export const client= redis.createClient()
+await client.connect()
 
 const monitoredExchanges = [
   { id: "ftx", symbols: ["BTC-PERP"] },
@@ -28,6 +34,22 @@ const monitoredExchanges = [
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD"] },
+  { id: "ftx", symbols: ["ETH-PERP"] },
+  { id: "bitmex", symbols: ["XBTUSD"] },
+  { id: "deribit", symbols: ["ETH-PERPETUAL"] },
+  { id: "binance-futures", symbols: ["ETHUSDT"] },
+  { id: "binance-delivery", symbols: ["ETHUSD_PERP"] },
+  { id: "bitfinex-derivatives", symbols: ["ETHF0:USTF0"] },
+  { id: "cryptofacilities", symbols: ["PI_XBTUSD"] },
+  { id: "huobi-dm-swap", symbols: ["ETH-USD"] },
+  { id: "ftx", symbols: ["ETH-PERP"] },
+  { id: "bitmex", symbols: ["XBTUSD"] },
+  { id: "deribit", symbols: ["ETH-PERPETUAL"] },
+  { id: "binance-futures", symbols: ["ETHUSDT"] },
+  { id: "binance-delivery", symbols: ["ETHUSD_PERP"] },
+  { id: "bitfinex-derivatives", symbols: ["ETHF0:USTF0"] },
+  { id: "cryptofacilities", symbols: ["PI_ETHUSD"] },
+  { id: "huobi-dm-swap", symbols: ["ETH-USDT"] },
 ];
 
 async function monitorLiquidations() {
@@ -131,6 +153,7 @@ function formatLiquidation(liquidation) {
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+app.get("/api/v1/get/article", apiGetArticle)
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });

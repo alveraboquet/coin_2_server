@@ -8,9 +8,13 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "node-fetch": "^3.2.9",
+    "nodemon": "^2.0.19",
+    "redis": "^4.2.0",
     "socket-io": "^1.0.0",
     "socket.io": "^4.5.1",
-    "tardis-dev": "^13.4.10"
+    "tardis-dev": "^13.4.10",
+    "translate-google": "^1.5.0"
   },
   "keywords": [
     "example",
