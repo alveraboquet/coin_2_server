@@ -25,10 +25,10 @@ const apiGetArticle = async (request, response_) => {
         return response_.json(arr);
       })
       .catch((err) => {
-        return response_.json([])
+        return response_.json(arr)
       });
   } catch (error) {
-    return response_.json([])
+    return response_.json(arr)
   }
   //     }
   // })
