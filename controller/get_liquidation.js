@@ -93,14 +93,12 @@ const monitoredExchanges = [
     }
     const liquidatedAmunt = usdCurrencyFormatter.format(normalizedAmount)
     const timestamp = liquidation.timestamp.toISOString()
-    const direction = liquidation.side === 'sell' ? '📉' : '📈'
+    const direction = liquidation.side === 'sell' ? "long" : "short"
     console.log(
-      `${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
-      `at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
+      {direction, name, position, symbol: liquidation.symbol, price, side: liquidation.side, liquidatedAmunt, timestamp, x: liquidation}
     )
     return arr.push(
-      `${direction} ${name} liquidated ${position} ${liquidation.symbol} position` +
-        ` at ${price}: ${liquidation.side} ${liquidatedAmunt}, timestmap: ${timestamp}`
+      {direction, name, position, symbol: liquidation.symbol, price, side: liquidation.side, liquidatedAmunt, timestamp, x: liquidation}
     );
   }
   
