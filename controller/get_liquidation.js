@@ -1,4 +1,3 @@
-import fetch from "node-fetch"
 import { streamNormalized, normalizeLiquidations, combine } from "tardis-dev";
 
 let arr= []
@@ -52,7 +51,7 @@ const monitoredExchanges = [
       inverse: true
     },
     'binance-futures': {
-      name: 'Binance USDT Futures',
+      name: 'Binance',
       contractMultiplier: 1,
       inverse: false
     },
