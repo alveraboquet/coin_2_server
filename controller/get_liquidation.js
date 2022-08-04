@@ -56,22 +56,22 @@ const monitoredExchanges = [
       inverse: false
     },
     'binance-delivery': {
-      name: 'Binance COIN Futures',
+      name: 'Binance',
       contractMultiplier: 1,
       inverse: true
     },
     'bitfinex-derivatives': {
-      name: 'Bitfinex Derivatives',
+      name: 'Bitfinex',
       contractMultiplier: 1,
       inverse: false
     },
     cryptofacilities: {
-      name: 'Kraken Futures',
+      name: 'Kraken',
       contractMultiplier: 1,
       inverse: true
     },
     'huobi-dm-swap': {
-      name: 'Huobi Swap',
+      name: 'Huobi',
       contractMultiplier: 100,
       inverse: true
     }
