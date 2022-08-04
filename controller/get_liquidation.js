@@ -10,7 +10,8 @@ const monitoredExchanges = [
     { id: 'binance-delivery', symbols: ['BTCUSD_PERP', 'ETHUSD_PERP'] },
     { id: 'bitfinex-derivatives', symbols: ['BTCF0:USTF0', 'ETHF0:USTF0'] },
     { id: 'cryptofacilities', symbols: ['PI_XBTUSD', 'PI_ETHUSD'] },
-    { id: 'huobi-dm-swap', symbols: ['BTC-USD', 'ETH-USD'] }
+    { id: 'huobi-dm-swap', symbols: ['BTC-USD', 'ETH-USD'] },
+    { id: 'bybit', symbols: ['BTC-USD', 'ETH-USD'] }
   ]
   
   async function monitorLiquidations() {
@@ -74,6 +75,16 @@ const monitoredExchanges = [
       name: 'Huobi',
       contractMultiplier: 100,
       inverse: true
+    },
+    bybit: {
+      name: "Bybit",
+      contractMultiplier: 100,
+      inverse: true
+    },
+    bybit: {
+      name: "Bybit",
+      contractMultiplier: 1,
+      inverse: true
     }
   }
   
@@ -94,10 +105,10 @@ const monitoredExchanges = [
     const timestamp = liquidation.timestamp.toISOString()
     const direction = liquidation.side === 'sell' ? "long" : "short"
     console.log(
-      {direction, name, position, symbol: liquidation.symbol, price, side: liquidation.side, liquidatedAmunt, timestamp, x: liquidation}
+      {direction, exchange: name, position, market: liquidation.symbol, price, side: liquidation.side=== "buy" ? "short" : "long", amount: liquidatedAmunt, unixtime: timestamp, x: liquidation}
     )
     return arr.push(
-      {direction, name, position, symbol: liquidation.symbol, price, side: liquidation.side, liquidatedAmunt, timestamp, x: liquidation}
+      {direction, exchange: name, position, market: liquidation.symbol, price, side: liquidation.side=== "buy" ? "short" : "long", amount: liquidatedAmunt, unixtime: timestamp, x: liquidation}
     );
   }
   
