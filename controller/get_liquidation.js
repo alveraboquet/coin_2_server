@@ -11,7 +11,7 @@ const monitoredExchanges = [
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0", "ETHF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD", "PI_ETHUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD", "ETH-USD"] },
-  { id: "bybit", symbols: ["BTCUSD", "ETHUSD"] },
+  { id: "bybit", symbols: ["BTCUSD", "ETHUSD", "BTCUSDT", "ETHUSDT"] },
 ];
 
 async function monitorLiquidations() {
@@ -83,7 +83,7 @@ const meta = {
   bybit: {
     name: "Bybit",
     contractMultiplier: 100,
-    inverse: true,
+    inverse: false,
   },
 };
 
