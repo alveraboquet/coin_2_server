@@ -7,7 +7,7 @@ const monitoredExchanges = [
   { id: "bitmex", symbols: ["XBTUSD", "ETHTUSD"] },
   { id: "deribit", symbols: ["BTC-PERPETUAL", "ETH-PERPETUAL"] },
   { id: "binance-futures", symbols: ["BTCUSDT", "ETHUSDT"] },
-  { id: "binance-delivery", symbols: ["BTCUSD_PERP", "ETHUSD_PERP"] },
+  // { id: "binance-delivery", symbols: ["BTCUSD_PERP", "ETHUSD_PERP"] },
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0", "ETHF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD", "PI_ETHUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD", "ETH-USD"] },
@@ -112,6 +112,11 @@ function formatLiquidation(liquidation) {
     side: liquidation.side,
     liquidatedAmunt,
     timestamp,
+    market: name,
+    exchange: liquidation.symbol,
+    side: direction,
+    unixtime: timestamp,
+    rate: price,
     x: liquidation,
   });
   return arr.push({
@@ -123,6 +128,11 @@ function formatLiquidation(liquidation) {
     side: liquidation.side,
     liquidatedAmunt,
     timestamp,
+    market: name,
+    exchange: liquidation.symbol,
+    side: direction,
+    unixtime: timestamp,
+    rate: price,
     x: liquidation,
   });
 }
