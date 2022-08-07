@@ -11,7 +11,7 @@ const monitoredExchanges = [
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0", "ETHF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD", "PI_ETHUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD", "ETH-USD"] },
-  { id: "bybit", symbols: ["BTCUSD", "ETHUSD", "BTCUSDT", "ETHUSDT"] },
+  // { id: "bybit", symbols: ["BTCUSD", "ETHUSD", "BTCUSDT", "ETHUSDT"] },
 ];
 
 async function monitorLiquidations() {
@@ -112,8 +112,8 @@ function formatLiquidation(liquidation) {
     side: liquidation.side,
     liquidatedAmunt,
     timestamp,
-    market: name,
-    exchange: liquidation.symbol,
+    exchange: name,
+    market: liquidation.symbol,
     side: direction,
     unixtime: timestamp,
     rate: price,
@@ -128,8 +128,8 @@ function formatLiquidation(liquidation) {
     side: liquidation.side,
     liquidatedAmunt,
     timestamp,
-    market: name,
-    exchange: liquidation.symbol,
+    exchange: name,
+    market: liquidation.symbol,
     side: direction,
     unixtime: timestamp,
     rate: price,
@@ -139,7 +139,30 @@ function formatLiquidation(liquidation) {
 
 monitorLiquidations();
 const get_liquidation = async (req, res) => {
-  return res.json(arr);
+  const arr1 = [];
+  const dataArray= [];
+  const urls = [
+    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSD",
+    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSD",
+    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSDT",
+    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSDT",
+    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=2",
+    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=3",
+    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=4",
+    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=5",
+  ];
+  Promise.all(urls.map((u) => fetch(u)))
+    .then((responses) => Promise.all(responses.map((res) => res.json())))
+    .then((data) => {
+      arr1.push(data)
+    })
+    .then(()=>{
+      arr1[0].map(item=> (item.data.map(item=> dataArray.push(item))))
+      arr1[1].map(item=> (item.data.map(item=> dataArray.push(item))))
+      arr1[2].map(item=> (item.data.map(item=> dataArray.push(item))))
+      arr1[3].map(item=> (item.data.map(item=> dataArray.push(item))))
+    })
+  return res.json(arr.concat(dataArray));
 };
 
 export default get_liquidation;
