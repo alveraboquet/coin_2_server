@@ -1,4 +1,5 @@
 import { streamNormalized, normalizeLiquidations, combine } from "tardis-dev";
+import fetch from "node-fetch"
 
 let arr = [];
 // let's monitor BTC perpetuals swaps only
@@ -158,11 +159,9 @@ const get_liquidation = async (req, res) => {
     })
     .then(()=>{
       arr1[0].map(item=> (item.data.map(item=> dataArray.push(item))))
-      arr1[1].map(item=> (item.data.map(item=> dataArray.push(item))))
-      arr1[2].map(item=> (item.data.map(item=> dataArray.push(item))))
-      arr1[3].map(item=> (item.data.map(item=> dataArray.push(item))))
+      return res.json(arr.concat(dataArray));
     })
-  return res.json(arr.concat(dataArray));
+  
 };
 
 export default get_liquidation;
