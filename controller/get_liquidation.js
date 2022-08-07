@@ -1,5 +1,5 @@
 import { streamNormalized, normalizeLiquidations, combine } from "tardis-dev";
-import fetch from "node-fetch"
+// import fetch from "node-fetch"
 
 let arr = [];
 // let's monitor BTC perpetuals swaps only
@@ -8,7 +8,7 @@ const monitoredExchanges = [
   { id: "bitmex", symbols: ["XBTUSD", "ETHTUSD"] },
   { id: "deribit", symbols: ["BTC-PERPETUAL", "ETH-PERPETUAL"] },
   { id: "binance-futures", symbols: ["BTCUSDT", "ETHUSDT"] },
-  // { id: "binance-delivery", symbols: ["BTCUSD_PERP", "ETHUSD_PERP"] },
+  { id: "binance-futures", symbols: ["BTCUSD_PERP", "ETHUSD_PERP"] },
   { id: "bitfinex-derivatives", symbols: ["BTCF0:USTF0", "ETHF0:USTF0"] },
   { id: "cryptofacilities", symbols: ["PI_XBTUSD", "PI_ETHUSD"] },
   { id: "huobi-dm-swap", symbols: ["BTC-USD", "ETH-USD"] },
@@ -84,7 +84,7 @@ const meta = {
   bybit: {
     name: "Bybit",
     contractMultiplier: 100,
-    inverse: false,
+    inverse: true,
   },
 };
 
@@ -140,27 +140,28 @@ function formatLiquidation(liquidation) {
 
 monitorLiquidations();
 const get_liquidation = async (req, res) => {
-  const arr1 = [];
-  const dataArray= [];
-  const urls = [
-    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSD",
-    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSD",
-    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSDT",
-    "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSDT",
-    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=2",
-    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=3",
-    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=4",
-    // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=5",
-  ];
-  Promise.all(urls.map((u) => fetch(u)))
-    .then((responses) => Promise.all(responses.map((res) => res.json())))
-    .then((data) => {
-      arr1.push(data)
-    })
-    .then(()=>{
-      arr1[0].map(item=> (item.data.map(item=> dataArray.push(item))))
-      return res.json(arr.concat(dataArray));
-    })
+  // const arr1 = [];
+  // const dataArray= [];
+  // const urls = [
+  //   "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSD",
+  //   "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSD",
+  //   "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=BTCUSDT",
+  //   "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&exchange=bybit&market=ETHUSDT",
+  //   // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=2",
+  //   // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=3",
+  //   // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=4",
+  //   // "https://api.xypher.io/v1/liquidations?key=YYWrcW1vvM9aXfevuOmTq4oWeEOOWKfc&page=5",
+  // ];
+  // Promise.all(urls.map((u) => fetch(u)))
+  //   .then((responses) => Promise.all(responses.map((res) => res.json())))
+  //   .then((data) => {
+  //     arr1.push(data)
+  //   })
+  //   .then(()=>{
+  //     arr1[0].map(item=> (item.data.map(item=> dataArray.push(item))))
+  //     return res.json(arr.concat(dataArray));
+  //   })
+  return res.json(arr)
   
 };
 
