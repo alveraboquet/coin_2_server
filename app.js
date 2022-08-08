@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 app.get("/api/v1/get/article", apiGetArticle);
 app.get("/api/v1/get/liquidation", get_liquidation);
 app.get("/api/v2/get/liquidation", apiv2Liquidation)
-app.get("/api/v2/get/get_coin", apiGetCoin)
+app.post("/api/v2/get/get_coin", apiGetCoin)
 server.listen(process.env.PORT || 4000, () => {
   console.log("Listening on port 4000");
 });
