@@ -1,5 +1,5 @@
 const apiGetCoin=(req, res)=> {
-    return res.json(req.body)
+    return res.json(req)
 }
 
 export default apiGetCoin
