@@ -16,8 +16,9 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({
-  extended: false
+  extended: true
 }))
+app.use(express.raw());
 // export const client= redis.createClient()
 // await client.connect()
 // io.on("connection", socket=> {
