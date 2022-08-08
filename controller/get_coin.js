@@ -1,5 +1,5 @@
 const apiGetCoin=(req, res)=> {
-    console.log(req.body)
+    console.log(req)
     return res.send(JSON.stringify(req.body))
 }
 
