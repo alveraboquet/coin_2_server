@@ -1,5 +1,6 @@
-import http from "http"
-var svr = http.createServer(function(req, resp) {
+
+const arr= []
+const apiGetCoin=(req, res)=> {
     var body = "";
    req.on('data', function (chunk) {
      body += chunk;
@@ -9,7 +10,8 @@ var svr = http.createServer(function(req, resp) {
      var jsonObj = JSON.parse(body);
    console.log(jsonObj.test);
    })
-     resp.end('Hello, World!');
- });
+     res.end('Hello, World!');
+    return res.send(JSON.stringify(req.body))
+}
 
-export default svr
+export default apiGetCoin
