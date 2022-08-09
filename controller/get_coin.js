@@ -8,7 +8,7 @@ const apiGetCoin = (req, res) => {
     arr.push(body)
     console.log("body: " + JSON.parse(body));
   });
-  return res.send("Hello Wolrd");
+  return res.send(arr);
 };
 
 export default apiGetCoin;
