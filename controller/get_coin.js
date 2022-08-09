@@ -13,9 +13,8 @@ const apiGetCoin = (req, res) => {
   req.on("end", function () {
     arr.push(body)
     arr?.filter(item=> item?.length > 0).map(item=> arr2?.push(JSON?.parse(item)))
-    arr3= _.uniq(arr2, _.isEqual)
   });
-  return res.send(_.uniq(arr2, _.isEqual))
+  return res.send(_.uniqWith(arr2, _.isEqual))
 }
 
 export default apiGetCoin
