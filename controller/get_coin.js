@@ -5,7 +5,7 @@ const apiGetCoin = (req, res) => {
     body += chunk;
   });
   req.on("end", function () {
-    arr.push(body)
+    arr.push(JSON.parse(body))
     console.log("body: " + JSON.parse(body));
   });
   return res.send(arr);
