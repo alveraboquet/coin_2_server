@@ -1,4 +1,4 @@
-const arr = [];
+let arr = [];
 const apiGetCoin = (req, res) => {
   var body = "";
   req.on("data", function (chunk) {
