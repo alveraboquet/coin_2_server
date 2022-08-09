@@ -1,7 +1,9 @@
 const arr = [];
 const apiGetCoin = (req, res) => {
   var body = "";
+  console.log(req.body)
   req.on("data", function (chunk) {
+    console.log(chunk)
     body += chunk;
   });
   req.on("end", function () {
