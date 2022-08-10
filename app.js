@@ -6,6 +6,7 @@ import get_liquidation from "./controller/get_liquidation.js";
 import { apiv2Liquidation } from "./controller/get_liquidation2.js";
 import apiGetCoin from "./controller/get_coin.js";
 import bodyParser from "body-parser";
+import connectMongo from "./mongodb/init.js";
 // import { Server } from "socket.io"
 
 const app = express();
@@ -32,7 +33,7 @@ app.use(bodyParser.json({limit: 1024 * 1024}))
 //     }, 1000)
 //   })
 // })
-
+connectMongo()
 app.get("/", (req, res) => {
   res.send("Hello World");
 });

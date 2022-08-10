@@ -1,26 +1,19 @@
 import _ from "lodash";
-import moment from "moment";
+// import moment from "moment";
+import { dbconnection } from "../mongodb/init.js";
 
-const arr = [];
-const arr2 = [];
 const apiGetCoin = (req, res) => {
   let body = "";
   req.on("data", function (chunk) {
     console.log(chunk);
     body += chunk;
-
   });
   req.on("end", function () {
-    arr.push(body);
-    arr
-      ?.filter((item) => item?.length > 0)
-      .map((item) => {
-        return arr2.push(_.assign(JSON.parse(item), {time_created: new Date()}))
-      });
+    dbconnection.collection("trade_live").insertOne(_.assign(JSON.parse(body), {time_created: new Date()}), (err, res)=> {
+      if(err) throw err
+      return res.json(1)
+    })
   });
-  return res.send(
-    _.orderBy(_.uniqWith(arr2, _.isEqual), "time_created", "desc").slice(0, 50)
-  );
 };
 
 export default apiGetCoin;
