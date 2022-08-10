@@ -12,8 +12,7 @@ const apiGetCoin = (req, res) => {
   req.on("end", function () {
     arr.push(body)
     arr?.filter(item=> item?.length > 0).map(item=> {
-      console.log(JSON.parse(item))
-      const obj= JSON.parse(item)
+      let obj= JSON.parse(item)
       obj.time_created= moment(new Date()).valueOf()
       return arr2?.push(obj)
     })
