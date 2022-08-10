@@ -8,15 +8,14 @@ const apiGetCoin = (req, res) => {
   req.on("data", function (chunk) {
     console.log(chunk);
     body += chunk;
+
   });
   req.on("end", function () {
     arr.push(body);
     arr
       ?.filter((item) => item?.length > 0)
       .map((item) => {
-        const obj = JSON.parse(item);
-        obj.time_created = new Date().getTime();
-        return arr2?.push(obj);
+        return arr2.push(_.assign(JSON.parse(item), {time_created: new Date()}))
       });
   });
   return res.send(
