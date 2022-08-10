@@ -13,8 +13,9 @@ const apiGetCoin = (req, res) => {
     arr.push(body)
     arr?.filter(item=> item?.length > 0).map(item=> {
       console.log(JSON.parse(item))
-      JSON.parse(item).time_created= moment(new Date()).valueOf()
-      return arr2?.push(JSON?.parse(item))
+      const obj= JSON.parse(item)
+      ojb.time_created= moment(new Date()).valueOf()
+      return arr2?.push(obj)
     })
   });
   return res.send(_.uniqWith(arr2, _.isEqual).slice(0, 50).reverse())
