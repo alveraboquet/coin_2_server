@@ -36,7 +36,7 @@ app.use(bodyParser.json({limit: 1024 * 1024}))
 //   })
 // })
 connectMongo()
-app.use(router())
+app.use(router)
 
 server.listen(process.env.PORT || 4000, () => {
   console.log(`Listening on port ${process.env.PORT}`);
