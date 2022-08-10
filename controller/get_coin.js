@@ -9,7 +9,7 @@ const apiGetCoin = (req, res) => {
     body += chunk;
   });
   req.on("end", function () {
-    dbconnection.collection("trade_live").insertOne(_.assign(JSON.parse(body), {time_created: new Date()}), (err, docs)=> {
+    dbconnection.collection("trade_live").insertOne(_.assign(JSON.parse(body), {time_created: new Date(), timeNumber: new Date().getTime()}), (err, docs)=> {
       if(err) throw err
       return res.json(1)
     })

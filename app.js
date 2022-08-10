@@ -7,6 +7,7 @@ import { apiv2Liquidation } from "./controller/get_liquidation2.js";
 import apiGetCoin from "./controller/get_coin.js";
 import bodyParser from "body-parser";
 import connectMongo from "./mongodb/init.js";
+import { apiCoinToClient } from "./controller/to_client.js";
 // import { Server } from "socket.io"
 
 const app = express();
@@ -41,6 +42,7 @@ app.get("/api/v1/get/article", apiGetArticle);
 app.get("/api/v1/get/liquidation", get_liquidation);
 app.get("/api/v2/get/liquidation", apiv2Liquidation)
 app.post("/api/v2/get/get_coin", apiGetCoin)
+api.get("/api/v1/coin/get", apiCoinToClient)
 server.listen(process.env.PORT || 4000, () => {
   console.log(`Listening on port ${process.env.PORT}`);
 });
