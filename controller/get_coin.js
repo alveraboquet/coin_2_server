@@ -14,7 +14,7 @@ const apiGetCoin = (req, res) => {
     arr?.filter(item=> item?.length > 0).map(item=> {
       console.log(JSON.parse(item))
       const obj= JSON.parse(item)
-      ojb.time_created= moment(new Date()).valueOf()
+      obj.time_created= moment(new Date()).valueOf()
       return arr2?.push(obj)
     })
   });
