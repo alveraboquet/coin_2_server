@@ -8,6 +8,7 @@ import apiGetCoin from "./controller/get_coin.js";
 import bodyParser from "body-parser";
 import connectMongo from "./mongodb/init.js";
 import { apiCoinToClient } from "./controller/to_client.js";
+import router from "./route/route.js";
 // import { Server } from "socket.io"
 
 const app = express();
@@ -35,14 +36,8 @@ app.use(bodyParser.json({limit: 1024 * 1024}))
 //   })
 // })
 connectMongo()
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-app.get("/api/v1/get/article", apiGetArticle);
-app.get("/api/v1/get/liquidation", get_liquidation);
-app.get("/api/v2/get/liquidation", apiv2Liquidation)
-app.post("/api/v2/get/get_coin", apiGetCoin)
-app.get("/api/v1/coin/get", apiCoinToClient)
+app.use(router())
+
 server.listen(process.env.PORT || 4000, () => {
   console.log(`Listening on port ${process.env.PORT}`);
 });
