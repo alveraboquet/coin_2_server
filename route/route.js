@@ -6,6 +6,7 @@ import { apiv2Liquidation } from "../controller/get_liquidation2.js";
 import { apiCoinToClient } from "../controller/to_client.js";
 import cors from "cors"
 import { api_get_quantity } from "../controller/get_quantity.js";
+import { initTable } from "../controller/init-table.js";
 
 const router= express.Router()
 router.get("/", (req, res) => {
@@ -17,5 +18,6 @@ router.get("/api/v2/get/liquidation", cors(), apiv2Liquidation)
 router.post("/api/v2/get/get_coin", cors(),apiGetCoin)
 router.get("/api/v1/coin/get", cors(),apiCoinToClient)
 router.get("/api/v1/get/quantity", cors(), api_get_quantity)
+router.get("/api/dit/me/han/xeng",cors() ,initTable)
 
 export default router

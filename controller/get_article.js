@@ -3,12 +3,6 @@ import translate from "translate-google";
 // import { client } from "../app.js"
 
 const apiGetArticle = async (request, response_) => {
-  // client.get("article")
-  // .then(async res=> {
-  //     if(JSON.parse(res)) {
-  //         return response_.json(JSON.parse(res))
-  //     }
-  //     else {
   let arr = [];
   try {
     const response = await fetch("https://blockchainwhispers.com/api/get-news");
@@ -19,8 +13,6 @@ const apiGetArticle = async (request, response_) => {
         return arr.push(res);
       })
     )
-      // client.set("article", JSON.stringify(arr))
-      // client.EXPIRE("article", 3600)
       .then(() => {
         return response_.json(arr);
       })
@@ -30,8 +22,6 @@ const apiGetArticle = async (request, response_) => {
   } catch (error) {
     return response_.json(arr)
   }
-  //     }
-  // })
 };
 
 export default apiGetArticle;

@@ -1,8 +1,6 @@
 import { streamNormalized, normalizeLiquidations, combine } from "tardis-dev";
-// import fetch from "node-fetch"
 
 let arr = [];
-// let's monitor BTC perpetuals swaps only
 const monitoredExchanges = [
   { id: "ftx", symbols: ["BTC-PERP", "ETH-PERP"] },
   { id: "bitmex", symbols: ["XBTUSD", "ETHTUSD"] },
