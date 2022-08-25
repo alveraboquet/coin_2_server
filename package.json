@@ -23,7 +23,8 @@
     "socket-io": "^1.0.0",
     "socket.io": "^4.5.1",
     "tardis-dev": "^13.4.10",
-    "translate-google": "^1.5.0"
+    "translate-google": "^1.5.0",
+    "x-ray": "^2.3.4"
   },
   "author": "Giang"
 }
